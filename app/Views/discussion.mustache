@@ -1,0 +1,10 @@
+{{>layout_head}}<h1>{{d.title}}</h1><p class="meta">by {{d.author}} - {{d.created_at}} UTC</p><p>{{d.body}}</p>
+{{#flash}}<p>{{flash}}</p>{{/flash}}
+<h2>Replies</h2>
+{{#comments}}{{#closes}}</div>{{/closes}}<div class="c" id="comment-{{id}}" data-id="{{id}}"{{#has_children}} data-has-children="1"{{/has_children}} style="margin-left:{{indent}}px">
+<div class="meta"><img alt="" width="24" height="24" src="{{avatar}}"> <strong>{{author}}</strong> - {{created_at}} - Depth {{depth}}</div>
+<div>{{body}}</div>
+{{#user}}<details><summary>Reply</summary><form method="post" action="/discussions/{{d.id}}/comments"><input type="hidden" name="csrf" value="{{csrf}}"><input type="hidden" name="parent_id" value="{{id}}"><textarea name="body" rows="2" maxlength="2000" required aria-label="Reply to {{author}}"></textarea><button>Post</button></form></details>{{/user}}
+</div>{{#has_children}}<div id="replies-{{id}}" class="replies">{{/has_children}}{{#end_closes}}</div>{{/end_closes}}{{/comments}}
+{{#user}}<h2>New top-level comment</h2><form method="post" action="/discussions/{{d.id}}/comments"><input type="hidden" name="csrf" value="{{csrf}}"><textarea name="body" rows="3" maxlength="2000" required aria-label="New comment"></textarea><button>Post</button></form>{{/user}}
+{{^user}}<p><a href="/login">Log in</a> to reply.</p>{{/user}}{{>layout_foot}}

@@ -1,0 +1,5 @@
+{{>layout_head}}<h1>Settings</h1>
+<form method="post" action="/settings"><input type="hidden" name="csrf" value="{{csrf}}">
+<label><input type="checkbox" name="use_gravatar" {{#gravatar}}checked{{/gravatar}}> Use my Gravatar</label>
+<p class="meta">Opting in shares a hash of your email and the viewer's IP with gravatar.com. Default: off.</p>
+<button>Save</button></form>{{>layout_foot}}

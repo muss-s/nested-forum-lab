@@ -1,0 +1,10 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{title}} - Nested Forum</title>
+<style>body{font-family:system-ui,sans-serif;max-width:48rem;margin:1rem auto;padding:0 1rem;line-height:1.5}
+nav{display:flex;gap:1rem;align-items:center;border-bottom:1px solid #ccc;padding-bottom:.5rem}nav form{display:inline;margin:0}
+.c{border-left:3px solid #6a8caf;padding:.25rem .75rem;margin:.5rem 0;background:#f6f8fa}.meta{font-size:.85rem;color:#555}
+.err{color:#a00}label{display:block;margin:.5rem 0}textarea{width:100%}</style></head><body>
+<nav><a href="/">Forum</a>{{#user}}<a href="/settings">Settings</a>{{/user}}<span style="flex:1"></span>
+{{#user}}<span>Signed in as {{username}}</span>
+<form method="post" action="/logout"><input type="hidden" name="csrf" value="{{csrf}}"><button>Log out</button></form>{{/user}}
+{{^user}}<a href="/login">Log in</a><a href="/register">Register</a>{{/user}}</nav><main>
